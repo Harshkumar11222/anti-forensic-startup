@@ -24,8 +24,8 @@ function downloadReport() {
 let token = null;
 
 function login() {
-    let user = document.getElementById("admin").value;
-    let pass = document.getElementById("1234").value;
+    let user = document.getElementById("harshu").value;
+    let pass = document.getElementById("9999").value;
 
     fetch(`https://anti-forensic-startup.onrender.com/login?username=${user}&password=${pass}`)
         .then(res => res.json())

@@ -1,13 +1,14 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from detector.detect import scan_system
 from jose import jwt
-from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 
 app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # sab allow (dev ke liye)
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -19,7 +20,24 @@ users = {
     "harshu": "9999"
 }
 
+# 👇 NEW (IMPORTANT)
+class LoginData(BaseModel):
+    username: str
+    password: str
 
+def create_token(username):
+    return jwt.encode({"user": username}, SECRET_KEY, algorithm="HS256")
+
+@app.post("/login")
+def login(data: LoginData):
+    if data.username in users and users[data.username] == data.password:
+        token = create_token(data.username)
+        return {"token": token}
+    return {"error": "Invalid credentials"}
+
+@app.get("/scan")
+def scan(token: str):
+    return scan_system("C:\\Users")
 
 
 def create_token(username):
