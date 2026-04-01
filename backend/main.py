@@ -16,7 +16,7 @@ app.add_middleware(
 SECRET_KEY = "mysecretkey"
 
 users = {
-    "admin": "1234"
+    "harshu": "9999"
 }
 
 
