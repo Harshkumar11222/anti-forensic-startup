@@ -62,3 +62,13 @@ async function checkSystem(){
         "\n📄 Log Issues: " + data.log_issues;
         "\n🧠 Anomaly: " + data.anomaly
 }
+
+
+
+
+
+
+
+git remote add origin https://github.com/Harshkumar11222/anti-forensic-startup.git
+git branch -M main
+git push -u origin main
