@@ -1,7 +1,7 @@
 let lastData = null;
 
 async function checkSystem(){
-    let res = await fetch("http://127.0.0.1:8000/scan");
+    let res = await fetch("https://anti-forensic-startup.onrender.com/scan");
     let data = await res.json();
 
     lastData = data;
@@ -38,7 +38,7 @@ function login(){
     let user = document.getElementById("username").value;
     let pass = document.getElementById("password").value;
 
-    fetch(`http://127.0.0.1:8000/login?username=${user}&password=${pass}`)
+    fetch(`https://your-backend-name.onrender.com/login?username=${user}&password=${pass}`)
     .then(res => res.json())
     .then(data => {
         if(data.status === "success"){
@@ -50,7 +50,7 @@ function login(){
 }
 
 async function checkSystem(){
-    let res = await fetch("http://127.0.0.1:8000/scan");
+    let res = await fetch("https://anti-forensic-startup.onrender.com/scan");
     let data = await res.json();
 
     document.getElementById("result").innerText =
@@ -68,7 +68,3 @@ async function checkSystem(){
 
 
 
-
-git remote add origin https://github.com/Harshkumar11222/anti-forensic-startup.git
-git branch -M main
-git push -u origin main

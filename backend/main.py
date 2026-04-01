@@ -1,14 +1,26 @@
 from fastapi import FastAPI, HTTPException
 from detector.detect import scan_system
 from jose import jwt
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # sab allow (dev ke liye)
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 SECRET_KEY = "mysecretkey"
 
 users = {
     "admin": "1234"
 }
+
+
+
 
 def create_token(username):
     return jwt.encode({"user": username}, SECRET_KEY, algorithm="HS256")
