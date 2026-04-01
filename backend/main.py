@@ -34,7 +34,7 @@ def verify_token(token):
 
 @app.get("/")
 def home():
-    return {"message": "Anti-Forensic Detection System Running 🚀"}
+    return {"message": "Backend is LIVE 🚀"}
 
 @app.get("/login")
 def login(username: str, password: str):
